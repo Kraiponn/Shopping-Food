@@ -16,9 +16,9 @@ export default (state = [], action) => {
         case PRODUCT_CREATE:
             return { saved: true, msg: 'เพิ่มข้อมูลสินค้าสำเร็จ' };
         case PRODUCT_UPDATE:
-            return { saved: true, msg: 'แก้ไขข้อมูลสินค้าสำเร็จ' };
+            return { data: action.payload, saved: true, msg: 'แก้ไขข้อมูลสินค้าสำเร็จ' };
         case PRODUCT_DELETE:
-            return { saved: true, msg: 'ลบสินค้าสำเร็จ' };
+            return { data: action.payload, saved: true, msg: 'ลบสินค้าสำเร็จ' };
         case PRODUCT_SET_DEFAULT:
             return { data: action.payload }; 
         default: 

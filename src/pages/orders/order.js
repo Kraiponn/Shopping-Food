@@ -18,6 +18,8 @@ class Order extends Component{
 
     renderOrderList(orders){
         return Array.isArray(orders) && orders.map((order, oid) => {
+
+            const date = new Date(order.orderedDate)
             return (
                 <div className="col-md-4 mb-2" key={oid}>
                     <div className="bg-secondary p-2 text-right">
@@ -25,7 +27,7 @@ class Order extends Component{
                             className="btn btn-sm btn-danger title"
                             onClick={() => this.props.orderDeleted(order.id)}>X</button>
                     </div>
-                    <h6 className="title ml-2 mt-2">{order.orderedDate}</h6>
+                    <h6 className="title ml-2 mt-2">{date.toLocaleDateString()}</h6>
                     <ul>
                         {
                             order.orders.map((list, x) => {
@@ -94,7 +96,7 @@ class Order extends Component{
 }
 
 function mapStateToProps(state){
-    console.log("Oders ", state)
+    //console.log("Oders ", state)
 
     if(state.orders && state.orders.saved){
         //console.log("Deletet loop #1")

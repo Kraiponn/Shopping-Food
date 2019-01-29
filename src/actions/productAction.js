@@ -30,11 +30,15 @@ export const productFetchById = id => {
 }
 
 
-export const productDeleted = (values) => {
+export const productDeleted = id => {
     return dispatch => {
-        axios.delete(process.env.REACT_APP_API_URL + "/products", values).then(
+        axios.delete(process.env.REACT_APP_API_URL + "/products/" + id).then(
             res => {
-                dispatch({ type: PRODUCT_DELETE });
+                axios.get(process.env.REACT_APP_API_URL + "/products").then(
+                    res => {
+                        dispatch({ type: PRODUCT_DELETE, payload: res.data });
+                    }
+                )
             }
         )
     }
@@ -56,7 +60,11 @@ export const productUpdate = (id, values) => {
     return dispatch => {
         axios.put(process.env.REACT_APP_API_URL + "/products/" + id, values).then(
             res => {
-                dispatch({ type: PRODUCT_UPDATE});
+                axios.get(process.env.REACT_APP_API_URL + "/products").then(
+                    res => {
+                        dispatch({ type: PRODUCT_UPDATE, payload: res.data });
+                    }
+                )
             }
         )
     }

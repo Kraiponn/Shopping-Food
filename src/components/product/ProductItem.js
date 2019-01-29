@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 
 class ProductItem extends Component{
 
-
     render(){
         const { productName, unitPrice, thumbnail } = this.props.product;
+        //console.log("from " + this.props.product)
+
         return(
             <div className="col-md-4 mt-3 mb-3">
                 <div className="card h-100">
@@ -29,15 +30,17 @@ class ProductItem extends Component{
                         </div>
                     )}
 
-                    {this.props.onEditOrder && this.props.onDeleteOrder && (
+                    {this.props.onEditProduct && this.props.onDeleteProduct && (
                         <div className="p-2">
-                            <button className="btn btn-secondary btn-sm title col-sm-5">
-                                <i class="fa fa-pencil" aria-hidden="true"></i>
-                                &nbsp;แก้ไขสินค้า
-                            </button>
-                            <button className="btn btn-danger btn-sm title col-sm-5">
-                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            <button className="btn btn-secondary title col-sm-5"
+                                onClick={() => this.props.onDeleteProduct(this.props.product)}>
+                                <i className="fa fa-pencil" aria-hidden="true"></i>
                                 &nbsp;ลบสินค้า
+                            </button>
+                            <button className="btn btn-danger title col-sm-5 float-right"
+                                onClick={() => this.props.onEditProduct(this.props.product)}>
+                                <i className="fa fa-trash" aria-hidden="true"></i>
+                                &nbsp;แก้ไขสินค้า
                             </button>
                         </div>
                     )}

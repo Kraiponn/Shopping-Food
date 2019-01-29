@@ -73,7 +73,7 @@ class Header extends Component{
                     <li className="nav-item ml-2">
                         <button className="btn btn-danger title"
                                 onClick={this.handleLogOut}>
-                            <i class="fa fa-circle-o-notch" aria-hidden="true"></i>
+                            <i className="fa fa-circle-o-notch" aria-hidden="true"></i>
                             &nbsp;ออกจากระบบ
                         </button>
                     </li>

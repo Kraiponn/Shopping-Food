@@ -5,6 +5,8 @@ import ProductItem from './ProductItem';
 class ProductList extends Component{
 
     renderProductList(products){
+        //console.log("list render  ", products)
+
         if(products && Array.isArray(products)){
             return products && products.map((product, id) => {
                 return (
@@ -12,8 +14,8 @@ class ProductList extends Component{
                         key={id} 
                         product={product} 
                         onAddOrder={this.props.onAddOrder}
-                        onEditOrder={this.props.onEditOrder}
-                        onDeleteOrder={this.props.onDeleteOrder}
+                        onEditProduct={this.props.onEditProduct}
+                        onDeleteProduct={this.props.onDeleteProduct}
                     />
                 )
             })
@@ -22,6 +24,8 @@ class ProductList extends Component{
 
     render(){
         const { products } = this.props;
+        //console.log("Hello product list ", products)
+
         return(
             <div className="row">
                 {this.renderProductList(products)}
